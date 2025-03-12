@@ -1,11 +1,10 @@
 import express, { Request, Response } from "express";
 import { marked } from "marked";
 import fs from "fs";
+import path from "path";
 
 const app = express();
 const port = 4000;
-
-app.use(express.static("src/public"));
 
 const filePath = "src/searchLater.md";
 
@@ -21,23 +20,28 @@ app.get("/", (req: Request, res: Response) => {
 
     res.send("<script>window.close();</script>");
   } else {
-    const data = fs.readFileSync(filePath, "utf8");
-    const list = marked(data);
+    res.sendFile(path.join(__dirname, "../../app/dist"));
 
-    const html = `
-    <!doctype html>
-    <html>
-      <head>
-        <link rel="search" type="application/opensearchdescription+xml" title="Search Later" href="http://localhost:4000/opensearch.xml">
-      </head>
-      <body>
-        ${list}
-      </body>`;
+    // const data = fs.readFileSync(filePath, "utf8");
+    // const list = marked(data);
 
-    console.log(html);
-    res.send(html);
+    // const html = `
+    // <!doctype html>
+    // <html>
+    //   <head>
+    //     <link rel="search" type="application/opensearchdescription+xml" title="Search Later" href="http://localhost:4000/opensearch.xml">
+    //   </head>
+    //   <body>
+    //     ${list}
+    //   </body>`;
+
+    // console.log(html);
+    // res.send(html);
   }
 });
+
+app.use(express.static("../app/dist"));
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);

@@ -1,4 +1,4 @@
 **/node_modules
 **/.DS_Store
 
-src/searchLater.md
+server/src/searchLater.md

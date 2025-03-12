@@ -5,6 +5,8 @@ import fs from "fs";
 const app = express();
 const port = 4000;
 
+app.use(express.static("src/public"));
+
 const filePath = "src/searchLater.md";
 
 app.get("/", (req: Request, res: Response) => {
@@ -20,7 +22,19 @@ app.get("/", (req: Request, res: Response) => {
     res.send("<script>window.close();</script>");
   } else {
     const data = fs.readFileSync(filePath, "utf8");
-    const html = marked(data);
+    const list = marked(data);
+
+    const html = `
+    <!doctype html>
+    <html>
+      <head>
+        <link rel="search" type="application/opensearchdescription+xml" title="Search Later" href="http://localhost:4000/opensearch.xml">
+      </head>
+      <body>
+        ${list}
+      </body>`;
+
+    console.log(html);
     res.send(html);
   }
 });

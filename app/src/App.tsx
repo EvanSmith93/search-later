@@ -17,7 +17,7 @@ function App() {
   const removeSearch = (index: number) => {
     const newSearches = searches.filter((_, i) => i !== index);
     localStorage.setItem("searches", JSON.stringify(newSearches));
-    setSearches([...newSearches].reverse());
+    setSearches(newSearches);
   };
 
   const onClickLink = (search: string, index: number) => {

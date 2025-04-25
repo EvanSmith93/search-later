@@ -1,8 +1,8 @@
 import { useSearchParams } from "react-router";
 
-const Search = () => {
+const AddToList = () => {
   const [searchParams] = useSearchParams();
-  const search = searchParams.get("search");
+  const search = searchParams.get("q");
 
   if (search) {
     const data = localStorage.getItem("searches");
@@ -20,4 +20,4 @@ const Search = () => {
   return <></>;
 };
 
-export default Search;
+export default AddToList;

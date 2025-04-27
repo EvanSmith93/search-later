@@ -1,6 +1,6 @@
 import { useSearchParams } from "react-router";
 
-const AddToList = () => {
+const Search = () => {
   const [searchParams] = useSearchParams();
   const search = searchParams.get("q");
 
@@ -17,7 +17,14 @@ const AddToList = () => {
     window.close();
   }
 
-  return <></>;
+  return (
+    <div className="flex h-screen flex-col items-center justify-center text-center">
+      <h1 className="text-5xl font-bold">Saved</h1>
+      <p className="mt-4 text-lg text-muted-foreground">
+        You may close this tab
+      </p>
+    </div>
+  );
 };
 
-export default AddToList;
+export default Search;

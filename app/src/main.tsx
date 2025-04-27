@@ -2,13 +2,13 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router";
 import "./index.css";
 import App from "./App.tsx";
-import AddToList from "./Search.tsx";
+import Search from "./Search.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />} />
-      <Route path="/later" element={<AddToList />} />
+      <Route path="/later" element={<Search />} />
     </Routes>
   </BrowserRouter>
 );

@@ -29,7 +29,7 @@ function App() {
 
   return (
     <div className="p-12">
-      <h1 className="text-4xl">Search Later</h1>
+      <h1 className="text-4xl font-bold mb-2">Search Later</h1>
 
       {searches.map((search, index) => (
         <div key={index}>

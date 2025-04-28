@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Button } from "../components/ui/button";
 import { SquareArrowOutUpRight, Trash } from "lucide-react";
 
-function App() {
+function List() {
   const [searches, setSearches] = useState<string[]>([]);
 
   useEffect(() => getSearches(), []);
@@ -56,10 +56,10 @@ function App() {
       ))}
 
       {searches.length === 0 && (
-        <p className="text-xl text-gray-400">No searches saved</p>
+        <p className="text-lg text-gray-400">No searches saved</p>
       )}
     </div>
   );
 }
 
-export default App;
+export default List;

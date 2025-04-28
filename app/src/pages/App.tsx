@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button } from "./components/ui/button";
+import { Button } from "../components/ui/button";
 import { SquareArrowOutUpRight, Trash } from "lucide-react";
 
 function App() {

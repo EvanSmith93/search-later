@@ -1,8 +1,8 @@
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router";
 import "./index.css";
-import App from "./App.tsx";
-import Search from "./Search.tsx";
+import App from "./pages/App.tsx";
+import Search from "./pages/Search.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <BrowserRouter>

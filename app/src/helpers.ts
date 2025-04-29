@@ -1,4 +1,4 @@
-export enum SearchLocation {
+export enum SearchEngine {
   GOOGLE = "GOOGLE",
   // BING,
   // YAHOO,
@@ -9,21 +9,21 @@ export enum SearchLocation {
   // PERPLEXITY,
 }
 
-export type SearchLocationData = {
+type SearchEngineData = {
   name: string;
   getUrl: (query: string) => string;
   icon: string;
 };
 
-export const searchLocationInfo: {
-  [key in SearchLocation]: SearchLocationData;
+export const searchEngineInfo: {
+  [key in SearchEngine]: SearchEngineData;
 } = {
-  [SearchLocation.GOOGLE]: {
+  [SearchEngine.GOOGLE]: {
     name: "Google",
     getUrl: (query) => `https://google.com/search?q=${query}`,
     icon: "/google.png",
   },
-  [SearchLocation.CHAT_GPT]: {
+  [SearchEngine.CHAT_GPT]: {
     name: "ChatGPT",
     getUrl: (query) => `https://chatgpt.com/search?q=${query}`,
     icon: "/chatgpt.png",

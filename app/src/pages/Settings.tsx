@@ -1,25 +1,25 @@
 import { useEffect, useState } from "react";
-import { SearchLocation, searchLocationInfo } from "@/helpers";
+import { SearchEngine, searchEngineInfo } from "@/helpers";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 
 function Settings() {
-  const initialLocations = JSON.parse(
-    localStorage.getItem("locations") ?? JSON.stringify([SearchLocation.GOOGLE])
-  ) as SearchLocation[];
-  const [locations, setLocations] =
-    useState<SearchLocation[]>(initialLocations);
+  const initialEngines = JSON.parse(
+    localStorage.getItem("searchEngines") ??
+      JSON.stringify([SearchEngine.GOOGLE])
+  ) as SearchEngine[];
+  const [searchEngines, setSearchEngines] =
+    useState<SearchEngine[]>(initialEngines);
 
   useEffect(() => {
-    console.log(locations);
-    localStorage.setItem("locations", JSON.stringify(locations));
-  }, [locations]);
+    localStorage.setItem("searchEngines", JSON.stringify(searchEngines));
+  }, [searchEngines]);
 
-  const toggleLocation = (location: SearchLocation, checked: boolean) => {
+  const toggleEngine = (engine: SearchEngine, checked: boolean) => {
     if (checked) {
-      setLocations([...new Set([...locations, location])]);
-    } else if (locations.length > 1) {
-      setLocations(locations.filter((loc) => loc !== location));
+      setSearchEngines([...new Set([...searchEngines, engine])]);
+    } else if (searchEngines.length > 1) {
+      setSearchEngines(searchEngines.filter((loc) => loc !== engine));
     }
   };
 
@@ -27,22 +27,22 @@ function Settings() {
     <div className="p-12">
       <h1 className="text-3xl font-bold mb-6">Settings</h1>
 
-      <h2 className="text-xl font-bold mb-2">Search Locations</h2>
-      {Object.values(SearchLocation).map((location, index) => {
-        const info = searchLocationInfo[location];
+      <h2 className="text-xl font-bold mb-2">Search Engines</h2>
+      {Object.values(SearchEngine).map((engine, index) => {
+        const info = searchEngineInfo[engine];
 
         return (
           <div className="flex items-center space-x-2 mb-3">
             <Checkbox
               key={index}
-              id={location}
-              value={location}
-              checked={locations.includes(location)}
+              id={engine}
+              value={engine}
+              checked={searchEngines.includes(engine)}
               onCheckedChange={(checked: boolean) =>
-                toggleLocation(location, checked)
+                toggleEngine(engine, checked)
               }
             />
-            <Label htmlFor={location}>
+            <Label htmlFor={engine}>
               <img src={info.icon} width={18} />
               {info.name}
             </Label>

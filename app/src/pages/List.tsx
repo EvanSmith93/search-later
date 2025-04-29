@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button } from "../components/ui/button";
 import { SquareArrowOutUpRight, Trash } from "lucide-react";
-import { SearchLocation, searchLocationInfo } from "@/helpers";
+import { SearchEngine, searchEngineInfo } from "@/helpers";
 
 function List() {
   const [searches, setSearches] = useState<string[]>([]);
@@ -15,9 +15,9 @@ function List() {
     }
   };
 
-  const locations = JSON.parse(
-    localStorage.getItem("locations") ?? JSON.stringify([SearchLocation.GOOGLE])
-  ) as SearchLocation[];
+  const searchEngines = JSON.parse(
+    localStorage.getItem("searchEngines") ?? JSON.stringify([SearchEngine.GOOGLE])
+  ) as SearchEngine[];
 
   const removeSearch = (index: number) => {
     const newSearches = searches.filter((_, i) => i !== index);
@@ -31,9 +31,9 @@ function List() {
   const onClickLink = (
     search: string,
     index: number,
-    location: SearchLocation
+    engine: SearchEngine
   ) => {
-    const info = searchLocationInfo[location];
+    const info = searchEngineInfo[engine];
     const url = info.getUrl(encodeURIComponent(search));
     window.open(url, "_blank");
 
@@ -57,19 +57,19 @@ function List() {
           <Button
             variant="outline"
             className="text-xl cursor-pointer mt-2 mr-2"
-            onClick={() => onClickLink(search, index, locations[0])}
+            onClick={() => onClickLink(search, index, searchEngines[0])}
           >
             {search}
             <SquareArrowOutUpRight strokeWidth={2.5} />
           </Button>
           {/* <span className="text-xl font-medium mt-2 mr-2">{search}</span> */}
-          {locations.map((location) => {
-            const info = searchLocationInfo[location];
+          {searchEngines.map((engine) => {
+            const info = searchEngineInfo[engine];
             return (
               <Button
                 variant="outline"
                 className="text-xl cursor-pointer mr-2"
-                onClick={() => onClickLink(search, index, location)}
+                onClick={() => onClickLink(search, index, engine)}
               >
                 <img src={info.icon} width={18} />
               </Button>

@@ -17,9 +17,9 @@ const PageLayout = () => {
           <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
             <Link href="/settings">Settings</Link>
           </NavigationMenuLink>
-          <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+          {/* <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
             <Link href="/setup">Setup</Link>
-          </NavigationMenuLink>
+          </NavigationMenuLink> */}
         </NavigationMenu>
       </header>
       <Outlet />

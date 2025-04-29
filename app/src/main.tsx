@@ -12,8 +12,8 @@ createRoot(document.getElementById("root")!).render(
       <Route path="/" element={<PageLayout />}>
         <Route path="/" element={<List />} />
         <Route path="/settings" element={<Settings />} />
+        <Route path="/search" element={<Search />} />
       </Route>
-      <Route path="/later" element={<Search />} />
     </Routes>
   </BrowserRouter>
 );

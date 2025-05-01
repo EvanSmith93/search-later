@@ -41,7 +41,7 @@ function List() {
   };
 
   return (
-    <div className="p-12">
+    <>
       <h1 className="text-4xl font-bold mb-2">Search Later</h1>
 
       {searches.map((search, index) => (
@@ -81,7 +81,7 @@ function List() {
       {searches.length === 0 && (
         <p className="text-lg text-gray-400">No searches saved</p>
       )}
-    </div>
+    </>
   );
 }
 

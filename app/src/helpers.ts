@@ -29,3 +29,14 @@ export const searchEngineInfo: {
     icon: "/chatgpt.png",
   },
 };
+
+export function getBrowserEngine(): "chromium" | "firefox" | "webkit" | null {
+  const ua = navigator.userAgent;
+
+  if (ua.includes("Firefox")) return "firefox";
+  if (ua.includes("Edg") || ua.includes("Chrome") || ua.includes("Chromium"))
+    return "chromium";
+  if (ua.includes("Safari")) return "webkit";
+
+  return null;
+}

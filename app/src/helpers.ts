@@ -1,11 +1,11 @@
 export enum SearchEngine {
   GOOGLE = "GOOGLE",
-  // BING,
+  BING = "BING",
   // YAHOO,
   // DUCK_DUCK_GO,
   // ECOSIA,
   CHAT_GPT = "CHAT_GPT",
-  // CLAUDE,
+  // CLAUDE = "CLAUDE",
   PERPLEXITY = "PERPLEXITY",
 }
 
@@ -22,6 +22,11 @@ export const searchEngineInfo: {
     name: "Google",
     getUrl: (query) => `https://google.com/search?q=${query}`,
     icon: "/google.png",
+  },
+  [SearchEngine.BING]: {
+    name: "Bing",
+    getUrl: (query) => `https://bing.com/search?q=${query}`,
+    icon: "/bing.png",
   },
   [SearchEngine.CHAT_GPT]: {
     name: "ChatGPT",

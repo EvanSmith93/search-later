@@ -6,7 +6,7 @@ export enum SearchEngine {
   // ECOSIA,
   CHAT_GPT = "CHAT_GPT",
   // CLAUDE,
-  // PERPLEXITY,
+  PERPLEXITY = "PERPLEXITY",
 }
 
 type SearchEngineData = {
@@ -27,6 +27,11 @@ export const searchEngineInfo: {
     name: "ChatGPT",
     getUrl: (query) => `https://chatgpt.com/search?q=${query}`,
     icon: "/chatgpt.png",
+  },
+  [SearchEngine.PERPLEXITY]: {
+    name: "Perplexity",
+    getUrl: (query) => `https://www.perplexity.ai/?q=${query}`,
+    icon: "/perplexity.png",
   },
 };
 

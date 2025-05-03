@@ -14,7 +14,7 @@ const Search = () => {
 
     links.push(search);
     localStorage.setItem("searches", JSON.stringify(links));
-    window.close();
+    // window.close();
   }
 
   return (
